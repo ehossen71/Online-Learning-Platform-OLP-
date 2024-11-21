@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - OLP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+      
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Online Learning Platform</h2>
+            </div>
+            <ul>
+                <li><a href="#enroll-courses"><i class="fas fa-book-reader"></i> Your Courses</a></li>
+                <li><a href="#enroll-courses"><i class="fas fa-book-open"></i> Enroll in Courses</a></li>
+                <li><a href="#quizzes"><i class="fas fa-edit"></i> Take Quizzes</a></li>
+                <li><a href="#progress"><i class="fas fa-hourglass-half"></i> Progress</a></li>
+                <li><a href="#leaderboard"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+                <li><a href="#certificates"><i class="fas fa-award"></i> Certificates</a></li>
+                <li><a href="#announcements"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+             
+            </ul>
+            <button class="logout-btn">Logout</button>
+        </nav>
+
+       
+        <main class="content">
+
+            <section id="your-courses">
+                
+                <div class="course-card">
+                    <h1>Your Courses</h1>
+                    <button>Show Courses</button>
+                </div>
+                
+            </section>
+
+            <section id="enroll-courses">
+                
+                <div class="course-card">
+                    <h1>Available Courses to Enroll</h1>
+                    <button>Browse Courses</button>
+                </div>
+                
+            </section>
+            <section id="quizzes">
+              
+                <div class="quiz-card">
+                    <h1>Take Quizzes</h1>
+                    <button>Start Quiz</button>
+                </div>
+            </section>
+            <section id="progress">
+                <h1>Progress</h1>
+                <div class="progress-card">
+                    <h3>Advanced Mathematics</h3>
+                    <p>Progress: 80%</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                    
+                </div>
+
+                <div class="progress-card">
+                    <h3>History of Arts</h3>
+                    <p>Progress: 50%</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%;"></div>
+                    </div>
+                    
+                </div>
+                <div class="progress-card">
+                    <h3>Introdution to Programming</h3>
+                    <p>Progress: 65%</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 65%;"></div>
+                    </div>
+                    
+                </div>
+            </section>
+            <section id="Rankings">
+                <h1>Rankings</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>UID</th>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CSE311</td>
+                            <td>AD113</td>
+                            <td>31</td>
+                            <td>Adam</td>
+                            
+                            <td>89</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="certificates">
+                <h1><br></h1>
+                <h1>My Certificates</h1>
+                <div class="certificate-card">
+                    <h3>Certification Title</h3>
+                    <p>Issued on: Date</p>
+                </div>
+            </section>
+            <section id="announcements">
+                <h1>Announcements</h1>
+                <p>Recent announcements will appear here.</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
