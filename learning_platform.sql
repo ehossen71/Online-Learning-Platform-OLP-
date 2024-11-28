@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 03:20 PM
+-- Generation Time: Nov 28, 2024 at 07:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -217,7 +217,7 @@ CREATE TABLE `userinfo` (
   `Last_Name` varchar(50) NOT NULL,
   `Role` enum('Student','Instructor') NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL
+  `Password` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -225,9 +225,8 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`UserID`, `First_Name`, `Last_Name`, `Role`, `Email`, `Password`) VALUES
-('emon123', 'Emon', 'Hossen', 'Instructor', 'eh@gmail.com', '$2y$10$lW3Eh8PrQw.pre2Ltz9ywuvQBZUY51GNmf4A/oc96kq'),
-('faheem123', 'Faheem', 'Hasnat', 'Student', 'fh@gmail.com', '$2y$10$rsJAp8PIxnMN1zkxP//ppeQU2DLzPdfv1RkrR8eYyri'),
-('tanora123', 'Tanora', 'Akther', 'Student', 'ta@gmail.com', '$2y$10$ZaSXu8CdJrZd4ixJk8kkNORgupDUwCd0N5ZYxFwleNC');
+('emon123', 'Emon', 'pagla', 'Student', 'em@gmail.com', '$2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.'),
+('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC');
 
 --
 -- Indexes for dumped tables
