@@ -67,7 +67,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, #52ff9a, #52ff9a);
+    background: linear-gradient(135deg, #ff5722, #ff5722);
 }
 
 .logout-btn {
@@ -77,7 +77,7 @@ button:hover {
 }
 
 .login-btn {
-    background: linear-gradient(135deg, #52ff9a, #20095a);
+    background: linear-gradient(135deg, #f41371, #f41371);
     margin-top: 1rem;
     width: 100%;
 }
