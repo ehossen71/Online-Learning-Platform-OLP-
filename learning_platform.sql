@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2024 at 09:46 PM
+-- Generation Time: Nov 28, 2024 at 03:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -96,10 +96,10 @@ CREATE TABLE `instructor` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `leaderboad`
+-- Table structure for table `leaderboard`
 --
 
-CREATE TABLE `leaderboad` (
+CREATE TABLE `leaderboard` (
   `LeaderboardID` int(10) NOT NULL,
   `QuizScore` double DEFAULT NULL,
   `Rank` int(10) DEFAULT NULL,
@@ -215,7 +215,7 @@ CREATE TABLE `userinfo` (
   `UserID` varchar(50) NOT NULL,
   `First_Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
-  `Role` varchar(20) NOT NULL,
+  `Role` enum('Student','Instructor') NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -225,7 +225,9 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`UserID`, `First_Name`, `Last_Name`, `Role`, `Email`, `Password`) VALUES
-('ff230', 'Fa', 'has', 'Student', 'akd@gmail.com', '1234');
+('emon123', 'Emon', 'Hossen', 'Instructor', 'eh@gmail.com', '$2y$10$lW3Eh8PrQw.pre2Ltz9ywuvQBZUY51GNmf4A/oc96kq'),
+('faheem123', 'Faheem', 'Hasnat', 'Student', 'fh@gmail.com', '$2y$10$rsJAp8PIxnMN1zkxP//ppeQU2DLzPdfv1RkrR8eYyri'),
+('tanora123', 'Tanora', 'Akther', 'Student', 'ta@gmail.com', '$2y$10$ZaSXu8CdJrZd4ixJk8kkNORgupDUwCd0N5ZYxFwleNC');
 
 --
 -- Indexes for dumped tables
@@ -277,9 +279,9 @@ ALTER TABLE `instructor`
   ADD KEY `userID` (`userID`);
 
 --
--- Indexes for table `leaderboad`
+-- Indexes for table `leaderboard`
 --
-ALTER TABLE `leaderboad`
+ALTER TABLE `leaderboard`
   ADD PRIMARY KEY (`LeaderboardID`),
   ADD KEY `quizresultID` (`quizresultID`);
 
@@ -401,10 +403,10 @@ ALTER TABLE `instructor`
   ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `userinfo` (`UserID`);
 
 --
--- Constraints for table `leaderboad`
+-- Constraints for table `leaderboard`
 --
-ALTER TABLE `leaderboad`
-  ADD CONSTRAINT `leaderboad_ibfk_1` FOREIGN KEY (`quizresultID`) REFERENCES `quizresult` (`QuizResultID`);
+ALTER TABLE `leaderboard`
+  ADD CONSTRAINT `leaderboard_ibfk_1` FOREIGN KEY (`quizresultID`) REFERENCES `quizresult` (`QuizResultID`);
 
 --
 -- Constraints for table `perform`
