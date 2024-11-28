@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 07:13 PM
+-- Generation Time: Nov 28, 2024 at 10:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,9 +43,20 @@ CREATE TABLE `certification` (
 CREATE TABLE `course` (
   `Course_ID` varchar(20) NOT NULL,
   `CourseName` varchar(50) DEFAULT NULL,
-  `Ins_ID` int(10) DEFAULT NULL,
-  `Search_ID` int(10) DEFAULT NULL
+  `Description` longtext NOT NULL,
+  `UserID` varchar(50) NOT NULL,
+  `Start_Date` date DEFAULT NULL,
+  `End_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
+('CSE215.12', 'Object Oriented Language', 'this course is made for java language', 'faheem123', '2024-10-27', '2024-12-19'),
+('CSE225.2', 'DataStructure', 'this course is made for data structure', 'faheem123', '2024-10-29', '2024-12-06'),
+('CSE311.5', 'DBMS', 'this is a database management system course', 'faheem123', '2024-10-28', '2024-12-12');
 
 -- --------------------------------------------------------
 
@@ -170,20 +181,6 @@ CREATE TABLE `quizresult` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `search`
---
-
-CREATE TABLE `search` (
-  `Search_ID` int(10) NOT NULL,
-  `Search_Term` varchar(50) DEFAULT NULL,
-  `Search_Type` varchar(50) DEFAULT NULL,
-  `Result` varchar(50) DEFAULT NULL,
-  `studentID` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `section`
 --
 
@@ -245,8 +242,8 @@ ALTER TABLE `certification`
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`Course_ID`),
-  ADD KEY `Search_ID` (`Search_ID`),
-  ADD KEY `Ins_ID` (`Ins_ID`);
+  ADD UNIQUE KEY `Course_ID` (`Course_ID`),
+  ADD KEY `foreign_key_userID` (`UserID`);
 
 --
 -- Indexes for table `degree`
@@ -321,13 +318,6 @@ ALTER TABLE `quizresult`
   ADD KEY `studentID` (`studentID`);
 
 --
--- Indexes for table `search`
---
-ALTER TABLE `search`
-  ADD PRIMARY KEY (`Search_ID`),
-  ADD KEY `studentID` (`studentID`);
-
---
 -- Indexes for table `section`
 --
 ALTER TABLE `section`
@@ -372,8 +362,7 @@ ALTER TABLE `certification`
 -- Constraints for table `course`
 --
 ALTER TABLE `course`
-  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`Search_ID`) REFERENCES `search` (`Search_ID`),
-  ADD CONSTRAINT `course_ibfk_2` FOREIGN KEY (`Ins_ID`) REFERENCES `instructor` (`Ins_ID`);
+  ADD CONSTRAINT `foreign_key_userID` FOREIGN KEY (`UserID`) REFERENCES `userinfo` (`UserID`);
 
 --
 -- Constraints for table `degree`
@@ -439,12 +428,6 @@ ALTER TABLE `quiz`
 ALTER TABLE `quizresult`
   ADD CONSTRAINT `quizresult_ibfk_1` FOREIGN KEY (`quiz_ID`) REFERENCES `quiz` (`Quiz_ID`),
   ADD CONSTRAINT `quizresult_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`StudentID`);
-
---
--- Constraints for table `search`
---
-ALTER TABLE `search`
-  ADD CONSTRAINT `search_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`StudentID`);
 
 --
 -- Constraints for table `section`
