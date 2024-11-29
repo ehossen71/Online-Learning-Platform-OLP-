@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userId = $_POST['UserID'];
     $firstName = $_POST['First_Name'];
     $lastName = $_POST['Last_Name'];
-    $role = $_POST['Role'];
+    $role = $_POST['Role']; // Either 'Student' or 'Instructor'
     $email = $_POST['Email'];
     $password = password_hash($_POST['Password'], PASSWORD_DEFAULT); // Hash the password for security
 
@@ -32,14 +32,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         echo "Error: User ID or Email already exists. Please try again with different credentials.";
     } else {
-        // Insert the new user data into the database
+        // Insert the new user into the Userinfo table
         $insertQuery = "INSERT INTO Userinfo (UserID, First_Name, Last_Name, Role, Email, Password) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($insertQuery);
         $stmt->bind_param("ssssss", $userId, $firstName, $lastName, $role, $email, $password);
 
         if ($stmt->execute()) {
-            echo "Sign-up successful! Redirecting to the login..";
-            // Redirect to the login (optional)
+            // Get the auto-generated ID for the new user
+            $lastInsertedId = $stmt->insert_id;
+
+            // Insert into the corresponding table based on the role
+            if ($role === "student") {
+                $studentInsertQuery = "INSERT INTO Student (UserID) VALUES (?)";
+                $stmt = $conn->prepare($studentInsertQuery);
+                $stmt->bind_param("s", $userId);
+
+                if ($stmt->execute()) {
+                    echo "Student ID successfully created! Redirecting to the login page.";
+                } else {
+                    echo "Error creating Student ID: " . $stmt->error;
+                }
+            } elseif ($role === "instructor") {
+                $instructorInsertQuery = "INSERT INTO Instructor (UserID) VALUES (?)";
+                $stmt = $conn->prepare($instructorInsertQuery);
+                $stmt->bind_param("s", $userId);
+
+                if ($stmt->execute()) {
+                    echo "Instructor ID successfully created! Redirecting to the login page.";
+                } else {
+                    echo "Error creating Instructor ID: " . $stmt->error;
+                }
+            }
+
+            // Redirect to login
             header("Location: login.html");
             exit();
         } else {

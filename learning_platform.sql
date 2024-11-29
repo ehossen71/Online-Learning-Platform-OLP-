@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 04:31 PM
+-- Generation Time: Nov 29, 2024 at 06:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,6 +36,13 @@ CREATE TABLE `announcement` (
   `Created_At` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`Announce_ID`, `UserID`, `Course_ID`, `Title`, `Content`, `Created_At`) VALUES
+(9, 'faheem123', 'CSE115.2', 'Quiz update', 'Kalke quiz ', '2024-11-29 17:11:00');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +63,7 @@ CREATE TABLE `certification` (
 --
 
 CREATE TABLE `course` (
+  `Course_Num` int(20) NOT NULL,
   `Course_ID` varchar(20) NOT NULL,
   `CourseName` varchar(50) DEFAULT NULL,
   `Description` longtext NOT NULL,
@@ -68,9 +76,8 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
-('CSE115.6', 'Introduction to C programming', 'This is a C language code.', 'faheem123', '2024-10-27', '2024-12-04'),
-('CSE215.4', 'Object Oriented Language', 'This is a java language course.(Updated)', 'faheem123', '2024-10-15', '2024-12-11');
+INSERT INTO `course` (`Course_Num`, `Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
+(3, 'CSE115.2', 'Introduction to C programming', 'This is code for learning C programming language.', 'faheem123', '2024-11-04', '2024-12-26');
 
 -- --------------------------------------------------------
 
@@ -103,7 +110,7 @@ CREATE TABLE `earns` (
 CREATE TABLE `enrollment` (
   `EnrollmentID` int(10) NOT NULL,
   `enrollmentDate` date DEFAULT NULL,
-  `studentID` int(10) DEFAULT NULL,
+  `StudentID` int(10) DEFAULT NULL,
   `course_ID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -115,8 +122,15 @@ CREATE TABLE `enrollment` (
 
 CREATE TABLE `instructor` (
   `Ins_ID` int(10) NOT NULL,
-  `userID` varchar(50) DEFAULT NULL
+  `UserID` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `instructor`
+--
+
+INSERT INTO `instructor` (`Ins_ID`, `UserID`) VALUES
+(1, 'faheem123');
 
 -- --------------------------------------------------------
 
@@ -199,16 +213,16 @@ CREATE TABLE `quizresult` (
 
 CREATE TABLE `section` (
   `Sec_ID` int(5) NOT NULL,
-  `Course_ID` varchar(20) NOT NULL
+  `Course_ID` varchar(20) NOT NULL,
+  `UserID` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `section`
 --
 
-INSERT INTO `section` (`Sec_ID`, `Course_ID`) VALUES
-(4, 'CSE215.4'),
-(6, 'CSE115.6');
+INSERT INTO `section` (`Sec_ID`, `Course_ID`, `UserID`) VALUES
+(2, 'CSE115.2', 'faheem123');
 
 -- --------------------------------------------------------
 
@@ -218,8 +232,7 @@ INSERT INTO `section` (`Sec_ID`, `Course_ID`) VALUES
 
 CREATE TABLE `student` (
   `StudentID` int(10) NOT NULL,
-  `Enrollment_Date` date NOT NULL,
-  `userID` varchar(50) DEFAULT NULL
+  `UserID` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -242,9 +255,7 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`UserID`, `First_Name`, `Last_Name`, `Role`, `Email`, `Password`) VALUES
-('emon123', 'Emon', 'Hossen', 'Student', 'em@gmail.com', '$2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.'),
-('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC'),
-('tanora123', 'Tanora', 'Akther', 'Instructor', 'ta@gmail.com', '$2y$10$DwexI0bqJ7hS3Sn.yzrd8uKyFZCJyeNR8aBn8x0bElILl/duYG3/i');
+('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6');
 
 --
 -- Indexes for dumped tables
@@ -272,6 +283,7 @@ ALTER TABLE `certification`
 ALTER TABLE `course`
   ADD PRIMARY KEY (`Course_ID`),
   ADD UNIQUE KEY `Course_ID` (`Course_ID`),
+  ADD UNIQUE KEY `Course` (`Course_Num`),
   ADD KEY `foreign_key_userID` (`UserID`);
 
 --
@@ -293,7 +305,7 @@ ALTER TABLE `earns`
 --
 ALTER TABLE `enrollment`
   ADD PRIMARY KEY (`EnrollmentID`),
-  ADD KEY `studentID` (`studentID`),
+  ADD KEY `studentID` (`StudentID`),
   ADD KEY `course_ID` (`course_ID`);
 
 --
@@ -301,7 +313,7 @@ ALTER TABLE `enrollment`
 --
 ALTER TABLE `instructor`
   ADD PRIMARY KEY (`Ins_ID`),
-  ADD KEY `userID` (`userID`);
+  ADD KEY `userID` (`UserID`);
 
 --
 -- Indexes for table `leaderboard`
@@ -356,7 +368,7 @@ ALTER TABLE `section`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`StudentID`),
-  ADD KEY `userID` (`userID`);
+  ADD KEY `userID` (`UserID`);
 
 --
 -- Indexes for table `userinfo`
@@ -372,13 +384,37 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `Announce_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Announce_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `Course_Num` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `degree`
 --
 ALTER TABLE `degree`
   MODIFY `DegreeID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `enrollment`
+--
+ALTER TABLE `enrollment`
+  MODIFY `EnrollmentID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `instructor`
+--
+ALTER TABLE `instructor`
+  MODIFY `Ins_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `StudentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

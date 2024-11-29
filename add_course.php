@@ -55,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute();
 
             // Insert into Section table
-            $sql_section = "INSERT INTO Section (Sec_ID, Course_ID) VALUES (?, ?)";
+            $sql_section = "INSERT INTO Section (Sec_ID, Course_ID,UserID) VALUES (?, ?,?)";
             $stmt_section = $conn->prepare($sql_section);
-            $stmt_section->bind_param("ss", $sec_id, $course_id);
+            $stmt_section->bind_param("sss", $sec_id, $course_id,$user_id);
             $stmt_section->execute();
 
             // Commit the transaction

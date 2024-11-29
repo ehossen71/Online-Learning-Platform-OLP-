@@ -101,3 +101,27 @@ User Role: eh123
 Database Password: $2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.
 User Role: eh123
 >>>>>>> 528b67ae07fe749a0966d456da00370f0c22e27f
+Database Password: $2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC
+User Role: fh123
+Database Password: $2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.
+User Role: eh123
+Database Password: $2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.
+User Role: eh123
+Database Password: $2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.
+User Role: eh123
+Database Password: $2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC
+User Role: fh123
+Database Password: $2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.
+User Role: eh123
+Database Password: $2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.
+User Role: eh123
+Database Password: $2y$10$rPjLG13AjeZs6dV7LBTfw.tWpegnE7fkvPioZquwSlcu09d/sBwYO
+User Role: ab123
+Database Password: $2y$10$tVS43dbR69YrTuQWZD5h4.fwO9uJHRQMNbFPgSRaoSuoYwXuDdHLK
+User Role: tn123
+Database Password: $2y$10$tVS43dbR69YrTuQWZD5h4.fwO9uJHRQMNbFPgSRaoSuoYwXuDdHLK
+User Role: ta123
+Database Password: $2y$10$qI1iajuKyZLf/NwWha7lhOsBsPfhE8qOpn5P6ll6FZbbufHkzzauu
+User Role: jk123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123

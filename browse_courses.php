@@ -60,6 +60,7 @@ $conn->close();
     <div class="browse-courses-container" style="max-width: 800px; margin: 0 auto; text-align: center;">
         <h1>Available Courses</h1>
 
+        <!-- Display available courses -->
         <?php if (count($courses) > 0): ?>
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
@@ -93,7 +94,7 @@ $conn->close();
             <p>No courses available at the moment.</p>
         <?php endif; ?>
 
-        <a href="student_dashboard.php"><button style="margin-top: 20px;">Back to Dashboard</button></a>
+        <a href="student_dashboard.html"><button style="margin-top: 20px;">Back to Dashboard</button></a>
     </div>
 </body>
 </html>

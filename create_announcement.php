@@ -25,7 +25,7 @@ if ($conn->connect_error) {
 $user_id = $_SESSION['userID'];
 
 // Fetch all courses for the logged-in user
-$sql = "SELECT Course_ID, CourseName FROM Course WHERE UserID = ?";
+$sql = "SELECT Course_ID FROM Course WHERE UserID = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $user_id);
 $stmt->execute();
@@ -69,7 +69,7 @@ $conn->close();
                 <option value="">Choose a Course</option>
                 <?php foreach ($courses as $course): ?>
                     <option value="<?php echo htmlspecialchars($course['Course_ID']); ?>">
-                        <?php echo htmlspecialchars($course['CourseName']); ?>
+                        <?php echo htmlspecialchars($course['Course_ID']); ?>
                     </option>
                 <?php endforeach; ?>
             </select>
