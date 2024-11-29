@@ -11,34 +11,18 @@
                 const response = await fetch("show_courses.php");
                 const courses = await response.json();
 
-<<<<<<< HEAD
-            const courseContainer = document.getElementById("course-list");
-            courses.forEach(course => {
-                const courseCard = document.createElement("div");
-                courseCard.className = "course-card";
-                courseCard.innerHTML = `
-                    <h2>${course.CourseName}</h2>
-                    <p>Course ID: ${course.Course_ID}</p>
-                    <p>Description: ${course.Description}</p>
-                    <button onclick="showModules('${course.Course_ID}')">Show Modules</button>
-                `;
-                courseContainer.appendChild(courseCard);
-            });
-        }
-=======
+                const courseContainer = document.getElementById("course-list");
+
                 if (courses.length === 0) {
-                    document.getElementById("course-list").innerHTML = "<p>You are not enrolled in any courses.</p>";
+                    courseContainer.innerHTML = "<p>You are not enrolled in any courses.</p>";
                     return;
                 }
->>>>>>> e0339bea157d76e6f84448eedf3c478afd72d275
 
-                const courseContainer = document.getElementById("course-list");
                 courses.forEach(course => {
                     const courseCard = document.createElement("div");
                     courseCard.className = "course-card";
                     courseCard.innerHTML = `
                         <h2>${course.CourseName}</h2>
-                      
                         <a href="course_modules.php?course_id=${course.Course_ID}">
                             <button>Show Modules</button>
                         </a>
@@ -47,6 +31,7 @@
                 });
             } catch (error) {
                 console.error("Error loading courses:", error);
+                document.getElementById("course-list").innerHTML = "<p>Failed to load courses. Please try again later.</p>";
             }
         }
 
@@ -60,17 +45,12 @@
                 <h1>Your Enrolled Courses</h1>
                 <!-- Courses will be dynamically listed here -->
             </section>
-<<<<<<< HEAD
-            <!-- Back to Dashboard Button -->
-            <div class="back-to-dashboard">
-                <a href="student_dashboard.html">
-                    <button class="back-btn">Back to Dashboard</button>
-                </a>
-=======
 
+            <!-- Back to Dashboard Button -->
             <div class="back-btn-container">
-                <a href="student_dashboard.html"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</button></a>
->>>>>>> e0339bea157d76e6f84448eedf3c478afd72d275
+                <a href="student_dashboard.html">
+                    <button class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
+                </a>
             </div>
         </main>
     </div>

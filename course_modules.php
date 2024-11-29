@@ -14,49 +14,20 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get logged-in user's ID
-$userID = $_SESSION['userID'];
+$courseID = $_GET['course_id']; // Get the course ID from the query string
 
-// Get the course ID from the URL parameter
-if (isset($_GET['course_id'])) {
-    $courseID = $_GET['course_id'];
-} else {
-    echo "Course ID not specified.";
-    exit();
-}
-
-// Fetch course details from the database
-$courseQuery = "
-    SELECT Course.Course_ID, Course.CourseName, Course.Description 
-    FROM Course
-    WHERE Course.Course_ID = ?";
+// Query to fetch the Course details (Course_ID and Description)
+$courseQuery = "SELECT Course_ID, CourseName, Description FROM Course WHERE Course_ID = ?";
 $stmt = $conn->prepare($courseQuery);
-$stmt->bind_param("i", $courseID); // Use integer type for Course_ID
+$stmt->bind_param("s", $courseID);  // Assuming Course_ID is a string (varchar)
 $stmt->execute();
-$course = $stmt->get_result()->fetch_assoc();
+$courseResult = $stmt->get_result();
 
-if (!$course) {
+if ($courseResult->num_rows > 0) {
+    $course = $courseResult->fetch_assoc();
+} else {
     echo "Course not found.";
     exit();
-}
-
-// Fetch modules for the course
-$modulesQuery = "
-    SELECT ModuleID, ModuleName, ModuleDescription 
-    FROM Modules  -- Check that the table name is correct here
-    WHERE Course_ID = ?";
-$stmt = $conn->prepare($modulesQuery);
-$stmt->bind_param("i", $courseID);
-$stmt->execute();
-$modulesResult = $stmt->get_result();
-
-if ($modulesResult->num_rows > 0) {
-    $modules = [];
-    while ($module = $modulesResult->fetch_assoc()) {
-        $modules[] = $module;
-    }
-} else {
-    $modules = [];
 }
 
 $stmt->close();
@@ -68,29 +39,26 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Modules - <?php echo htmlspecialchars($course['CourseName']); ?></title>
+    <title>Course Modules - OLP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="dashboard-container">
         <main class="content">
-            <h1>Modules for <?php echo htmlspecialchars($course['CourseName']); ?></h1>
+            <section id="course-details">
+                <h1>Course Details</h1>
+                <div class="course-card">
+                    <h2>Course Name: <?php echo htmlspecialchars($course['CourseName']); ?></h2>
+                    <p><strong>Course ID:</strong> <?php echo htmlspecialchars($course['Course_ID']); ?></p>
+                    <p><strong>Description:</strong> <?php echo htmlspecialchars($course['Description']); ?></p>
+                </div>
+            </section>
 
-            <?php if (!empty($modules)): ?>
-                <ul>
-                    <?php foreach ($modules as $module): ?>
-                        <li>
-                            <h2><?php echo htmlspecialchars($module['ModuleName']); ?></h2>
-                            <p><?php echo nl2br(htmlspecialchars($module['ModuleDescription'])); ?></p>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <p>No modules available for this course.</p>
-            <?php endif; ?>
-
+            <!-- Back to Dashboard Button -->
             <div class="back-btn-container">
-                <a href="show_courses.php"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back to Courses</button></a>
+                <a href="show_courses.html">
+                    <button class="back-btn"><i class="fas fa-arrow-left"></i> Back to Courses</button>
+                </a>
             </div>
         </main>
     </div>

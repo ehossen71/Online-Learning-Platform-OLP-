@@ -39,9 +39,9 @@
                         <tr>
                             <th style='border: 1px solid #ccc; padding: 10px;'>Course ID</th>
                             <th style='border: 1px solid #ccc; padding: 10px;'>Course Name</th>
-                            <th style='border: 1px solid #ccc; padding: 10px;'>Description</th>
                             <th style='border: 1px solid #ccc; padding: 10px;'>Start Date</th>
                             <th style='border: 1px solid #ccc; padding: 10px;'>End Date</th>
+                            <th style='border: 1px solid #ccc; padding: 10px;'>Action</th>
                         </tr>
                     </thead>
                     <tbody>";
@@ -50,9 +50,13 @@
                 echo "<tr>
                         <td style='border: 1px solid #ccc; padding: 10px;'>" . htmlspecialchars($row['Course_ID']) . "</td>
                         <td style='border: 1px solid #ccc; padding: 10px;'>" . htmlspecialchars($row['CourseName']) . "</td>
-                        <td style='border: 1px solid #ccc; padding: 10px;'>" . htmlspecialchars($row['Description']) . "</td>
                         <td style='border: 1px solid #ccc; padding: 10px;'>" . htmlspecialchars($row['Start_Date']) . "</td>
                         <td style='border: 1px solid #ccc; padding: 10px;'>" . htmlspecialchars($row['End_Date']) . "</td>
+                        <td style='border: 1px solid #ccc; padding: 10px;'>
+                            <a href='course_description.php?course_id=" . $row['Course_ID'] . "'>
+                                <button>View Description</button>
+                            </a>
+                        </td>
                       </tr>";
             }
 

@@ -3,6 +3,7 @@ session_start(); // Start the session
 
 // Check if the user is logged in
 if (!isset($_SESSION['userID'])) {
+    // Redirect to the login page if not logged in
     header("Location: login.html");
     exit();
 }
@@ -49,15 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         try {
             // Insert into Course table
-            $sql = "INSERT INTO Course (Course_ID, CourseName, Description, UserID, Start_Date, End_Date) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO Course (Course_ID, CourseName, Description, UserID, Start_Date, End_Date) VALUES (?, ?, ?, ?, ?, ?)"; 
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssss", $course_id, $course_name, $description, $user_id, $start_date, $end_date);
             $stmt->execute();
 
             // Insert into Section table
-            $sql_section = "INSERT INTO Section (Sec_ID, Course_ID,UserID) VALUES (?, ?,?)";
+            $sql_section = "INSERT INTO Section (Sec_ID, Course_ID, UserID) VALUES (?, ?, ?)";
             $stmt_section = $conn->prepare($sql_section);
-            $stmt_section->bind_param("sss", $sec_id, $course_id,$user_id);
+            $stmt_section->bind_param("sss", $sec_id, $course_id, $user_id);
             $stmt_section->execute();
 
             // Commit the transaction

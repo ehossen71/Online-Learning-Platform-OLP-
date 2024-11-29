@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 07:27 PM
+-- Generation Time: Nov 29, 2024 at 10:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`Announce_ID`, `UserID`, `Course_ID`, `Title`, `Content`, `Created_At`) VALUES
-(9, 'faheem123', 'CSE115.2', 'Quiz update', 'Kalke quiz ', '2024-11-29 17:11:00');
+(9, 'faheem123', 'CSE115.2', 'Quiz update', 'Kalke quiz ', '2024-11-29 17:11:00'),
+(10, 'faheem123', 'MAT350.9', 'Quiz update', 'lfajslsdjg ojflsdjgl ', '2024-11-29 18:32:32');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,10 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`Course_Num`, `Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
-(3, 'CSE115.2', 'Introduction to C programming', 'This is code for learning C programming language.', 'faheem123', '2024-11-04', '2024-12-26');
+(3, 'CSE115.2', 'Introduction to C programming', 'This is a C programming language course', 'faheem123', '2024-10-27', '2024-12-25'),
+(6, 'HIS103.5', 'Emergence of Bangladesh', 'This course is about history of Bangladesh', 'tanvir123', '2024-09-29', '2024-12-07'),
+(4, 'MAT350.9', 'Engineering Mathematics', 'This is an Engineering mathematics course', 'faheem123', '2024-10-27', '2024-12-25'),
+(5, 'MAT361.10', 'Statistics ', 'This is a statistics course', 'faheem123', '2024-10-27', '2024-12-25');
 
 -- --------------------------------------------------------
 
@@ -119,7 +123,9 @@ CREATE TABLE `enrollment` (
 --
 
 INSERT INTO `enrollment` (`EnrollmentID`, `enrollmentDate`, `StudentID`, `course_ID`) VALUES
-(8, '2024-11-29', 2, 'CSE115.2');
+(8, '2024-11-29', 2, 'CSE115.2'),
+(9, '2024-11-29', 3, 'MAT350.9'),
+(10, '2024-11-29', 3, 'CSE115.2');
 
 -- --------------------------------------------------------
 
@@ -137,7 +143,8 @@ CREATE TABLE `instructor` (
 --
 
 INSERT INTO `instructor` (`Ins_ID`, `UserID`) VALUES
-(1, 'faheem123');
+(1, 'faheem123'),
+(2, 'tanvir123');
 
 -- --------------------------------------------------------
 
@@ -229,7 +236,10 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`Sec_ID`, `Course_ID`, `UserID`) VALUES
-(2, 'CSE115.2', 'faheem123');
+(2, 'CSE115.2', 'faheem123'),
+(9, 'MAT350.9', 'faheem123'),
+(10, 'MAT361.10', 'faheem123'),
+(5, 'HIS103.5', 'tanvir123');
 
 -- --------------------------------------------------------
 
@@ -247,7 +257,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`StudentID`, `UserID`) VALUES
-(2, 'emon123');
+(2, 'emon123'),
+(3, 'tanora123');
 
 -- --------------------------------------------------------
 
@@ -270,7 +281,9 @@ CREATE TABLE `userinfo` (
 
 INSERT INTO `userinfo` (`UserID`, `First_Name`, `Last_Name`, `Role`, `Email`, `Password`) VALUES
 ('emon123', 'Emon', 'Hossen', 'Student', 'eh@gmail.com', '$2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO'),
-('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6');
+('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6'),
+('tanora123', 'Tanora', 'Akther', 'Student', 'ta@gmail.com', '$2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC'),
+('tanvir123', 'Tanvir', 'Niloy', 'Instructor', 'tn@gmail.com', '$2y$10$P5KcsxDOWi5qfoo3OMdzs.ZTo7u5PNA/6mf08eaMNilZXUb4VEt8a');
 
 --
 -- Indexes for dumped tables
@@ -399,13 +412,13 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `Announce_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Announce_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `Course_Num` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Course_Num` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `degree`
@@ -417,19 +430,19 @@ ALTER TABLE `degree`
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `EnrollmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `EnrollmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `Ins_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Ins_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `StudentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `StudentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
