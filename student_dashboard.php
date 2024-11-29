@@ -1,7 +1,13 @@
 <?php
+<<<<<<< HEAD
 session_start(); // Start the session
 
 // Check if the user is logged in
+=======
+session_start();
+
+// Check if the user is logged in by verifying session
+>>>>>>> b9eb794b53d60706d031c9a447b0586caae462af
 if (!isset($_SESSION['userId'])) {
     // If not logged in, redirect to the login page
     header("Location: login.html");
