@@ -135,3 +135,17 @@ Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
 User Role: eh123
 Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
 User Role: eh123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
+User Role: ta123
+Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
+User Role: ta123
+Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
+User Role: ta123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123

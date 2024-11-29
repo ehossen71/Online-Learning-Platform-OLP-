@@ -17,8 +17,8 @@
                 courseCard.innerHTML = `
                     <h2>${course.CourseName}</h2>
                     <p>Course ID: ${course.Course_ID}</p>
-                    
-                    <button onclick="showModules('${course.Course_ID}')">Show Modules<p>Description: ${course.Description}</p></button>
+                    <p>Description: ${course.Description}</p>
+                    <button onclick="showModules('${course.Course_ID}')">Show Modules</button>
                 `;
                 courseContainer.appendChild(courseCard);
             });
@@ -37,6 +37,12 @@
             <section id="course-list">
                 <h1>Your Courses</h1>
             </section>
+            <!-- Back to Dashboard Button -->
+            <div class="back-to-dashboard">
+                <a href="student_dashboard.html">
+                    <button class="back-btn">Back to Dashboard</button>
+                </a>
+            </div>
         </main>
     </div>
 </body>
