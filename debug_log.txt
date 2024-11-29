@@ -58,3 +58,7 @@ Database Password: $2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC
 User Role: fh123
 Database Password: $2y$10$DwexI0bqJ7hS3Sn.yzrd8uKyFZCJyeNR8aBn8x0bElILl/duYG3/i
 User Role: ta123
+Database Password: $2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC
+User Role: fh123
+Database Password: $2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC
+User Role: fh123

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 01:15 PM
+-- Generation Time: Nov 29, 2024 at 02:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -54,11 +54,7 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
-('1', 'no name', 'successfully update alhamdulillah2', 'faheem123', '2023-01-02', '2025-02-20'),
-('CSE215.12', 'Object Oriented Language', 'this course is made for java language', 'faheem123', '2024-10-27', '2024-12-19'),
-('CSE225.2', 'DataStructure', 'this course is made for data structure', 'faheem123', '2024-10-29', '2024-12-06'),
-('CSE311.5', 'DBMS', 'this is a database management system course', 'faheem123', '2024-10-27', '2024-12-11'),
-('HIS103', 'Emergence of Bangladesh', 'This course is made about history of Bangladesh', 'tanora123', '2024-11-21', '2024-12-26');
+('CSE215.4', 'Object Oriented Language', 'This is a java language course.', 'faheem123', '2024-10-15', '2024-12-11');
 
 -- --------------------------------------------------------
 
@@ -162,7 +158,6 @@ CREATE TABLE `qualification` (
 CREATE TABLE `quiz` (
   `Quiz_ID` int(20) NOT NULL,
   `Quizname` varchar(50) DEFAULT NULL,
-  `Sec_ID` int(20) DEFAULT NULL,
   `studentID` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -187,10 +182,16 @@ CREATE TABLE `quizresult` (
 --
 
 CREATE TABLE `section` (
-  `Sec_ID` int(20) NOT NULL,
-  `Sec_name` varchar(50) DEFAULT NULL,
-  `course_ID` varchar(20) DEFAULT NULL
+  `Sec_ID` int(5) NOT NULL,
+  `Course_ID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `section`
+--
+
+INSERT INTO `section` (`Sec_ID`, `Course_ID`) VALUES
+(4, 'CSE215.4');
 
 -- --------------------------------------------------------
 
@@ -309,7 +310,6 @@ ALTER TABLE `qualification`
 --
 ALTER TABLE `quiz`
   ADD PRIMARY KEY (`Quiz_ID`),
-  ADD KEY `Sec_ID` (`Sec_ID`),
   ADD KEY `studentID` (`studentID`);
 
 --
@@ -324,8 +324,7 @@ ALTER TABLE `quizresult`
 -- Indexes for table `section`
 --
 ALTER TABLE `section`
-  ADD PRIMARY KEY (`Sec_ID`),
-  ADD KEY `course_ID` (`course_ID`);
+  ADD KEY `foreign_key_Course_ID` (`Course_ID`);
 
 --
 -- Indexes for table `student`
@@ -422,7 +421,6 @@ ALTER TABLE `qualification`
 -- Constraints for table `quiz`
 --
 ALTER TABLE `quiz`
-  ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`Sec_ID`) REFERENCES `section` (`Sec_ID`),
   ADD CONSTRAINT `quiz_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`StudentID`);
 
 --
@@ -436,7 +434,7 @@ ALTER TABLE `quizresult`
 -- Constraints for table `section`
 --
 ALTER TABLE `section`
-  ADD CONSTRAINT `section_ibfk_1` FOREIGN KEY (`course_ID`) REFERENCES `course` (`Course_ID`);
+  ADD CONSTRAINT `foreign_key_Course_ID` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
 
 --
 -- Constraints for table `student`
