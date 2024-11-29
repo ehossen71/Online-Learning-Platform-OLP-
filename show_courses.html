@@ -5,47 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Courses - OLP</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        async function loadCourses() {
+            const response = await fetch("show_courses.php");
+            const courses = await response.json();
+
+            const courseContainer = document.getElementById("course-list");
+            courses.forEach(course => {
+                const courseCard = document.createElement("div");
+                courseCard.className = "course-card";
+                courseCard.innerHTML = `
+                    <h2>${course.CourseName}</h2>
+                    <p>Course ID: ${course.Course_ID}</p>
+                    
+                    <button onclick="showModules('${course.Course_ID}')">Show Modules<p>Description: ${course.Description}</p></button>
+                `;
+                courseContainer.appendChild(courseCard);
+            });
+        }
+
+        function showModules(courseID) {
+            alert("Modules for " + courseID + " will be displayed here."); // Placeholder action
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCourses);
+    </script>
 </head>
 <body>
     <div class="dashboard-container">
-      
-        <nav class="sidebar">
-            <div class="logo">
-                <h2>Online Learning Platform</h2>
-            </div>
-            <ul>
-                <li><a href="student_dashboard.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a></li>
-                <li><a href="#course1"><i class="fas fa-book-reader"></i> Advanced Mathematics</a></li>
-                <li><a href="#course2"><i class="fas fa-book-reader"></i> History of Arts</a></li>
-                <li><a href="#course3"><i class="fas fa-book-reader"></i> Introduction to Programming</a></li>
-            </ul>
-            <button class="logout-btn">Logout</button>
-        </nav>
-
         <main class="content">
-            <section id="course1">
-                <div class="course-card">
-                    <h1>Advanced Mathematics</h1>
-                    <p>This course covers advanced mathematical concepts and techniques.</p>
-                    <button>Show Modules</button>
-                </div>
-            </section>
-
-            <section id="course2">
-                <div class="course-card">
-                    <h1>History of Arts</h1>
-                    <p>This course explores the history of art from ancient times to the modern era.</p>
-                    <button>Show Modules</button>
-                </div>
-            </section>
-
-            <section id="course3">
-                <div class="course-card">
-                    <h1>Introduction to Programming</h1>
-                    <p>This course teaches the basics of programming using Python.</p>
-                    <button>Show Modules</button>
-                </div>
+            <section id="course-list">
+                <h1>Your Courses</h1>
             </section>
         </main>
     </div>

@@ -83,7 +83,7 @@ $conn->close();
             <button type="submit">Post Announcement</button>
         </form>
 
-        <a href="instructor_dashboard.php"><button class="back-btn">Back to Dashboard</button></a>
+        <a href="instructor_dashboard.html"><button class="back-btn">Back to Dashboard</button></a>
     </div>
 </body>
 </html>

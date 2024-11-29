@@ -15,6 +15,21 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Fetch StudentID based on UserID
+$studentQuery = "SELECT StudentID FROM Student WHERE UserID = ?";
+$stmt = $conn->prepare($studentQuery);
+$stmt->bind_param("s", $userID);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $student = $result->fetch_assoc();
+    $studentID = $student['StudentID'];
+} else {
+    echo "Error: Student not found.";
+    exit();
+}
+
 // Fetch available courses
 $sql = "SELECT Course_ID, CourseName, Description, Start_Date, End_Date FROM Course";
 $result = $conn->query($sql);
@@ -31,22 +46,34 @@ if (isset($_GET['enroll']) && isset($_GET['course_id'])) {
     $courseID = $_GET['course_id'];
     $enrollDate = date("Y-m-d");
 
-    // Insert the enrollment record into the Enrollment table
-    $enrollSQL = "INSERT INTO Enrollment (studentId, course_ID, enrollmentDate) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($enrollSQL);
-    $stmt->bind_param("sss", $userID, $courseID, $enrollDate);
+    // Check if the student is already enrolled in the course
+    $checkEnrollmentSQL = "SELECT * FROM Enrollment WHERE StudentID = ? AND Course_ID = ?";
+    $checkStmt = $conn->prepare($checkEnrollmentSQL);
+    $checkStmt->bind_param("is", $studentID, $courseID);
+    $checkStmt->execute();
+    $enrollmentResult = $checkStmt->get_result();
 
-    if ($stmt->execute()) {
-        echo "<p>You have successfully enrolled in the course!</p>";
+    if ($enrollmentResult->num_rows > 0) {
+        echo "<p>You are already enrolled in this course!</p>";
     } else {
-        echo "<p>Error enrolling in the course. Please try again.</p>";
-    }
+        // Insert the enrollment record into the Enrollment table
+        $enrollSQL = "INSERT INTO Enrollment (StudentID, Course_ID, enrollmentDate) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($enrollSQL);
+        $stmt->bind_param("iss", $studentID, $courseID, $enrollDate);
 
-    $stmt->close();
+        if ($stmt->execute()) {
+            echo "<p>You have successfully enrolled in the course!</p>";
+        } else {
+            echo "<p>Error enrolling in the course. Please try again.</p>";
+        }
+
+        $stmt->close();
+    }
 }
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
