@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Courses - OLP</title>
+    <title>Your Enrolled Courses</title>
     <link rel="stylesheet" href="style.css">
     <script>
         async function loadCourses() {
-            const response = await fetch("show_courses.php");
-            const courses = await response.json();
+            try {
+                const response = await fetch("show_courses.php");
+                const courses = await response.json();
 
-            const courseContainer = document.getElementById("course-list");
-            courses.forEach(course => {
-                const courseCard = document.createElement("div");
-                courseCard.className = "course-card";
-                courseCard.innerHTML = `
-                    <h2>${course.CourseName}</h2>
-                    <p>Course ID: ${course.Course_ID}</p>
-                    
-                    <button onclick="showModules('${course.Course_ID}')">Show Modules<p>Description: ${course.Description}</p></button>
-                `;
-                courseContainer.appendChild(courseCard);
-            });
-        }
+                if (courses.length === 0) {
+                    document.getElementById("course-list").innerHTML = "<p>You are not enrolled in any courses.</p>";
+                    return;
+                }
 
-        function showModules(courseID) {
-            alert("Modules for " + courseID + " will be displayed here."); // Placeholder action
+                const courseContainer = document.getElementById("course-list");
+                courses.forEach(course => {
+                    const courseCard = document.createElement("div");
+                    courseCard.className = "course-card";
+                    courseCard.innerHTML = `
+                        <h2>${course.CourseName}</h2>
+                      
+                        <a href="course_modules.php?course_id=${course.Course_ID}">
+                            <button>Show Modules</button>
+                        </a>
+                    `;
+                    courseContainer.appendChild(courseCard);
+                });
+            } catch (error) {
+                console.error("Error loading courses:", error);
+            }
         }
 
         document.addEventListener("DOMContentLoaded", loadCourses);
@@ -35,8 +41,13 @@
     <div class="dashboard-container">
         <main class="content">
             <section id="course-list">
-                <h1>Your Courses</h1>
+                <h1>Your Enrolled Courses</h1>
+                <!-- Courses will be dynamically listed here -->
             </section>
+
+            <div class="back-btn-container">
+                <a href="student_dashboard.html"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</button></a>
+            </div>
         </main>
     </div>
 </body>
