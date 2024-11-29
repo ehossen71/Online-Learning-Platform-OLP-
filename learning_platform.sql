@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 02:24 PM
+-- Generation Time: Nov 29, 2024 at 04:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `learning_platform`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcement`
+--
+
+CREATE TABLE `announcement` (
+  `Announce_ID` int(10) NOT NULL,
+  `UserID` varchar(50) NOT NULL,
+  `Course_ID` varchar(20) NOT NULL,
+  `Title` varchar(100) NOT NULL,
+  `Content` longtext NOT NULL,
+  `Created_At` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -54,7 +69,8 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
-('CSE215.4', 'Object Oriented Language', 'This is a java language course.', 'faheem123', '2024-10-15', '2024-12-11');
+('CSE115.6', 'Introduction to C programming', 'This is a C language code.', 'faheem123', '2024-10-27', '2024-12-04'),
+('CSE215.4', 'Object Oriented Language', 'This is a java language course.(Updated)', 'faheem123', '2024-10-15', '2024-12-11');
 
 -- --------------------------------------------------------
 
@@ -191,7 +207,8 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`Sec_ID`, `Course_ID`) VALUES
-(4, 'CSE215.4');
+(4, 'CSE215.4'),
+(6, 'CSE115.6');
 
 -- --------------------------------------------------------
 
@@ -232,6 +249,14 @@ INSERT INTO `userinfo` (`UserID`, `First_Name`, `Last_Name`, `Role`, `Email`, `P
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`Announce_ID`),
+  ADD KEY `fk_course` (`Course_ID`),
+  ADD KEY `fk_UserID` (`UserID`);
 
 --
 -- Indexes for table `certification`
@@ -344,6 +369,12 @@ ALTER TABLE `userinfo`
 --
 
 --
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `Announce_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `degree`
 --
 ALTER TABLE `degree`
@@ -352,6 +383,13 @@ ALTER TABLE `degree`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD CONSTRAINT `fk_UserID` FOREIGN KEY (`UserID`) REFERENCES `userinfo` (`UserID`),
+  ADD CONSTRAINT `fk_course` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
 
 --
 -- Constraints for table `certification`
