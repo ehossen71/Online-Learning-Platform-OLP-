@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 10:46 PM
+-- Generation Time: Nov 29, 2024 at 01:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -54,9 +54,11 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
+('1', 'no name', 'successfully update alhamdulillah2', 'faheem123', '2023-01-02', '2025-02-20'),
 ('CSE215.12', 'Object Oriented Language', 'this course is made for java language', 'faheem123', '2024-10-27', '2024-12-19'),
 ('CSE225.2', 'DataStructure', 'this course is made for data structure', 'faheem123', '2024-10-29', '2024-12-06'),
-('CSE311.5', 'DBMS', 'this is a database management system course', 'faheem123', '2024-10-28', '2024-12-12');
+('CSE311.5', 'DBMS', 'this is a database management system course', 'faheem123', '2024-10-27', '2024-12-11'),
+('HIS103', 'Emergence of Bangladesh', 'This course is made about history of Bangladesh', 'tanora123', '2024-11-21', '2024-12-26');
 
 -- --------------------------------------------------------
 
@@ -222,8 +224,9 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`UserID`, `First_Name`, `Last_Name`, `Role`, `Email`, `Password`) VALUES
-('emon123', 'Emon', 'pagla', 'Student', 'em@gmail.com', '$2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.'),
-('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC');
+('emon123', 'Emon', 'Hossen', 'Student', 'em@gmail.com', '$2y$10$LPIH06qo29BJCdefX6kNcejfcAocls1atP1M1VPN86JN8Kp.thm3.'),
+('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$cdLtQ/uAUjKXdcycAoTVlOxZmpG2M6Ncu7nZLaTn1E4IhGjKuWOdC'),
+('tanora123', 'Tanora', 'Akther', 'Instructor', 'ta@gmail.com', '$2y$10$DwexI0bqJ7hS3Sn.yzrd8uKyFZCJyeNR8aBn8x0bElILl/duYG3/i');
 
 --
 -- Indexes for dumped tables

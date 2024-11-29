@@ -21,7 +21,8 @@
                 <li><a href="#issue-certificates"><i class="fas fa-certificate"></i> Issue Certificates</a></li>
                 <li><a href="#announcements"><i class="fas fa-bullhorn"></i> Announcements</a></li>
             </ul>
-            <a href="login.html"> <button class="logout-btn">Logout </button></a>
+            <a href="logout.php"> <button class="logout-btn">Logout</button></a>
+
         </nav>
 
         
@@ -31,15 +32,18 @@
                     <h1>Manage Courses</h1>
                     <a href="add_course.html"><button>Add New Course</button></a>
                 </div>
+            
                 
-
-                <div class="course-card">
-                    <h1>Course Name</h1>
-                    <button>View Course</button>
-                    <h1><br></h1>
-                    <button>Edit Course</button>
-                </div>
+                    <div class="course-card">
+                        <h1>Course Management</h1>
+                        <a href="view_course.php"><button>View Courses</button></a>
+                        <h1><br></h1>
+                        <a href="edit_course.php?Course_ID"><button>Edit a Course</button></a>
+                        <!-- Replace Course_ID=1 with a dynamic ID based on your actual courses -->
+                    </div>
+                </section>
             </section>
+
             <section id="create-quizzes">
                 <div class="course-card">
                     <h1>Create Quizzes</h1>

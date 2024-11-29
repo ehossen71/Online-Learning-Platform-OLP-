@@ -44,44 +44,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
-
-// Check if the form is submitted
-/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Check if all fields are filled
-    if (empty($_POST['Course_ID']) || empty($_POST['CourseName']) || empty($_POST['Description']) || empty($_POST['UserID']) || empty($_POST['Start_Date']) || empty($_POST['End_Date'])) {
-        echo "Error: All fields are required.";
-    } else {
-        // Get form data
-        $course_id = $conn->real_escape_string($_POST['Course_ID']);
-        $course_name = $conn->real_escape_string($_POST['CourseName']);
-        $course_description = $conn->real_escape_string($_POST['Description']);
-        $ins_user_id = $conn->real_escape_string($_POST['UserID']);
-        $course_start = $conn->real_escape_string($_POST['Start_Date']);
-        $course_end = $conn->real_escape_string($_POST['End_Date']);
-
-        // Insert into database
-        $query = "INSERT INTO Course (Course_ID, CourseName, Description, UserID, Start_Date, End_Date) 
-                  VALUES (?, ?, ?, ?, ?, ?)";
-        
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssssss", $course_id, $course_name, $course_description, $ins_user_id, $course_start, $course_end);
-
-        if ($stmt->execute()) {
-            // Success message
-            echo "<script>alert('Course added successfully!'); window.location.href='instructor_dashboard.html';</script>";
-        } else {
-            // Error message
-            echo "<script>alert('Error: " . $stmt->error . "'); window.location.href='add_course.html';</script>";
-        }
-
-        // Close statement
-        $stmt->close();
-    }
-}
-
-// Close the connection
-$conn->close();
 ?>
-*/
+
