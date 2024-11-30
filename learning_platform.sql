@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2024 at 07:43 PM
+-- Generation Time: Dec 01, 2024 at 12:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -144,10 +144,18 @@ CREATE TABLE `leaderboard` (
 --
 
 CREATE TABLE `progress` (
-  `Progress_ID` int(10) NOT NULL,
-  `Progress_Status` varchar(100) NOT NULL,
-  `StudentID` int(10) DEFAULT NULL
+  `Course_ID` varchar(20) NOT NULL,
+  `Quiz_NO` int(11) NOT NULL,
+  `StudentID` int(11) NOT NULL,
+  `Percentage` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `progress`
+--
+
+INSERT INTO `progress` (`Course_ID`, `Quiz_NO`, `StudentID`, `Percentage`) VALUES
+('MAT350.9', 1, 0, 0.00);
 
 -- --------------------------------------------------------
 
@@ -167,7 +175,8 @@ CREATE TABLE `quiz_description` (
 
 INSERT INTO `quiz_description` (`Course_ID`, `Quiz_NO`, `Description_Quiz`) VALUES
 ('CSE115.2', 1, 'Read carefully and choose the correct answer after choosing once you cannot back for another choice.'),
-('CSE115.2', 2, 'lskfja lsdfjasld dsjlfa; j');
+('CSE115.2', 2, 'lskfja lsdfjasld dsjlfa; j'),
+('MAT350.9', 1, 'This is quiz 1 for this course');
 
 -- --------------------------------------------------------
 
@@ -196,7 +205,9 @@ INSERT INTO `quiz_question` (`Course_ID`, `Quiz_NO`, `Que_NO`, `Question`, `Choi
 ('CSE115.2', 1, 2, '2+2 = ?', '3', '4', '10', '22', 'choice2'),
 ('CSE115.2', 2, 1, '3+7 = ?', '9', '11', '10', '13', 'choice3'),
 ('CSE115.2', 2, 2, 'What is the currency of Bangladesh?', 'Taka', 'Dollar', 'Dirham', 'Pound', 'choice1'),
-('CSE115.2', 2, 3, 'What is the capital of Bangladesh?', 'Khulna', 'Dhaka', 'Chittagong', 'Rajshahi', 'choice2');
+('CSE115.2', 2, 3, 'What is the capital of Bangladesh?', 'Khulna', 'Dhaka', 'Chittagong', 'Rajshahi', 'choice2'),
+('MAT350.9', 1, 1, 'what is the new version of iphone?', '16', '15', '14', '13', 'choice1'),
+('MAT350.9', 1, 2, 'Who is the new president of USA?', 'Harris', 'Tom', 'Trump', 'Clinton', 'choice3');
 
 -- --------------------------------------------------------
 
@@ -218,7 +229,8 @@ CREATE TABLE `quiz_result` (
 
 INSERT INTO `quiz_result` (`Course_ID`, `Quiz_NO`, `Score`, `Student_ID`, `CourseName`) VALUES
 ('CSE115.2', 1, 2, 2, 'Introduction to C programming'),
-('CSE115.2', 2, 2, 2, 'Introduction to C programming');
+('CSE115.2', 2, 2, 2, 'Introduction to C programming'),
+('MAT350.9', 1, 1, 3, 'Engineering Mathematics');
 
 -- --------------------------------------------------------
 
@@ -331,18 +343,10 @@ ALTER TABLE `instructor`
   ADD KEY `userID` (`UserID`);
 
 --
--- Indexes for table `leaderboard`
---
-ALTER TABLE `leaderboard`
-  ADD PRIMARY KEY (`LeaderboardID`),
-  ADD KEY `quizresultID` (`quizresultID`);
-
---
 -- Indexes for table `progress`
 --
 ALTER TABLE `progress`
-  ADD PRIMARY KEY (`Progress_ID`),
-  ADD KEY `StudentID` (`StudentID`);
+  ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`,`StudentID`);
 
 --
 -- Indexes for table `quiz_description`
@@ -449,43 +453,7 @@ ALTER TABLE `enrollment`
 -- Constraints for table `instructor`
 --
 ALTER TABLE `instructor`
-  ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `userinfo` (`UserID`);
-
---
--- Constraints for table `leaderboard`
---
-ALTER TABLE `leaderboard`
-  ADD CONSTRAINT `leaderboard_ibfk_1` FOREIGN KEY (`quizresultID`) REFERENCES `quizresult` (`QuizResultID`);
-
---
--- Constraints for table `progress`
---
-ALTER TABLE `progress`
-  ADD CONSTRAINT `progress_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`);
-
---
--- Constraints for table `quiz_question`
---
-ALTER TABLE `quiz_question`
-  ADD CONSTRAINT `quiz_question_ibfk_1` FOREIGN KEY (`Course_ID`,`Quiz_NO`) REFERENCES `quiz_description` (`Course_ID`, `Quiz_NO`) ON DELETE CASCADE;
-
---
--- Constraints for table `quiz_result`
---
-ALTER TABLE `quiz_result`
-  ADD CONSTRAINT `quiz_result_ibfk_1` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
-
---
--- Constraints for table `section`
---
-ALTER TABLE `section`
-  ADD CONSTRAINT `foreign_key_Course_ID` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
-
---
--- Constraints for table `student`
---
-ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `userinfo` (`UserID`);
+  ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userinfo` (`UserID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
