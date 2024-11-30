@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Nov 30, 2024 at 07:43 PM
+=======
+-- Generation Time: Nov 30, 2024 at 12:40 PM
+>>>>>>> 207cf69f80bf4009604e271543a94946edb1d844
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -172,6 +176,7 @@ INSERT INTO `quiz_description` (`Course_ID`, `Quiz_NO`, `Description_Quiz`) VALU
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `quiz_question`
 --
 
@@ -202,6 +207,9 @@ INSERT INTO `quiz_question` (`Course_ID`, `Quiz_NO`, `Que_NO`, `Question`, `Choi
 
 --
 -- Table structure for table `quiz_result`
+=======
+-- Table structure for table `quizresult`
+>>>>>>> 207cf69f80bf4009604e271543a94946edb1d844
 --
 
 CREATE TABLE `quiz_result` (
@@ -219,6 +227,53 @@ CREATE TABLE `quiz_result` (
 INSERT INTO `quiz_result` (`Course_ID`, `Quiz_NO`, `Score`, `Student_ID`, `CourseName`) VALUES
 ('CSE115.2', 1, 2, 2, 'Introduction to C programming'),
 ('CSE115.2', 2, 2, 2, 'Introduction to C programming');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_description`
+--
+
+CREATE TABLE `quiz_description` (
+  `Course_ID` varchar(20) NOT NULL,
+  `Quiz_NO` int(11) NOT NULL,
+  `Description_Quiz` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz_description`
+--
+
+INSERT INTO `quiz_description` (`Course_ID`, `Quiz_NO`, `Description_Quiz`) VALUES
+('CSE115.2', 1, 'Read carefully and choose the correct answer after choosing once you cannot back for another choice.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_question`
+--
+
+CREATE TABLE `quiz_question` (
+  `Course_ID` varchar(20) NOT NULL,
+  `Quiz_NO` int(11) NOT NULL,
+  `Que_NO` int(11) NOT NULL,
+  `Question` text NOT NULL,
+  `Choice1` text NOT NULL,
+  `Choice2` text NOT NULL,
+  `Choice3` text NOT NULL,
+  `Choice4` text NOT NULL,
+  `Correct_Ans` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz_question`
+--
+
+INSERT INTO `quiz_question` (`Course_ID`, `Quiz_NO`, `Que_NO`, `Question`, `Choice1`, `Choice2`, `Choice3`, `Choice4`, `Correct_Ans`) VALUES
+('CSE115.2', 1, 1, '2+2 = ?', '3', '10', '4', '7', 'choice3'),
+('CSE115.2', 1, 2, '(a + b)^2 = ?', 'a^2 + 2ab - b^2', 'a^2 + 2ab + b^2', 'a^2 - 2ab + b^2', 'a^2 + 4ab + b^2', 'choice2'),
+('CSE115.2', 1, 3, 'What is the capital of Bangladesh?', 'Khulna', 'Barishal', 'Dhaka', 'Narsingdi', 'choice3'),
+('CSE115.2', 1, 4, 'What is the national fruit of Bangladesh?', 'Jackfruit', 'Mango', 'Banana', 'Apple', 'choice1');
 
 -- --------------------------------------------------------
 
@@ -351,6 +406,7 @@ ALTER TABLE `quiz_description`
   ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `quiz_question`
 --
 ALTER TABLE `quiz_question`
@@ -358,9 +414,24 @@ ALTER TABLE `quiz_question`
 
 --
 -- Indexes for table `quiz_result`
+=======
+-- Indexes for table `quizresult`
+>>>>>>> 207cf69f80bf4009604e271543a94946edb1d844
 --
 ALTER TABLE `quiz_result`
   ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`,`Student_ID`);
+
+--
+-- Indexes for table `quiz_description`
+--
+ALTER TABLE `quiz_description`
+  ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`);
+
+--
+-- Indexes for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`,`Que_NO`);
 
 --
 -- Indexes for table `section`
@@ -470,10 +541,24 @@ ALTER TABLE `quiz_question`
   ADD CONSTRAINT `quiz_question_ibfk_1` FOREIGN KEY (`Course_ID`,`Quiz_NO`) REFERENCES `quiz_description` (`Course_ID`, `Quiz_NO`) ON DELETE CASCADE;
 
 --
+<<<<<<< HEAD
 -- Constraints for table `quiz_result`
 --
 ALTER TABLE `quiz_result`
   ADD CONSTRAINT `quiz_result_ibfk_1` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
+=======
+-- Constraints for table `quizresult`
+--
+ALTER TABLE `quizresult`
+  ADD CONSTRAINT `quizresult_ibfk_1` FOREIGN KEY (`quiz_ID`) REFERENCES `quiz` (`Quiz_ID`),
+  ADD CONSTRAINT `quizresult_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`StudentID`);
+>>>>>>> 207cf69f80bf4009604e271543a94946edb1d844
+
+--
+-- Constraints for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD CONSTRAINT `quiz_question_ibfk_1` FOREIGN KEY (`Course_ID`,`Quiz_NO`) REFERENCES `quiz_description` (`Course_ID`, `Quiz_NO`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `section`
