@@ -2,6 +2,7 @@
 // Start the session to store login status and role
 session_start();
 
+
 // Database connection parameters
 $servername = "localhost";
 $username = "root"; // Adjust if you have a different username
