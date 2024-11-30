@@ -93,9 +93,15 @@
             <button type="button" onclick="addQuestion()">Add Another Question</button>
             <button type="submit">Create Quiz</button>
         </form>
+<<<<<<< HEAD
+    </div>
+</body>
+</html>
+=======
 
         <a href="instructor_dashboard.html"><button class="back-btn">Back to Dashboard</button></a>
     </div>
 </body>
 </html>
 
+>>>>>>> 70a3fadbb5914b2372217b11b46932ae5e6a914a

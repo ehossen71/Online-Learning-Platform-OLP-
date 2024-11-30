@@ -182,11 +182,36 @@ Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
 User Role: eh123
 Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
 User Role: eh123
-<<<<<<< HEAD
 Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
 User Role: eh123
 Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
 User Role: ta123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
+User Role: ta123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
+User Role: ta123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
+User Role: eh123
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 207cf69f80bf4009604e271543a94946edb1d844
 Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
@@ -198,34 +223,8 @@ User Role: eh123
 <<<<<<< HEAD
 Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
 User Role: eh123
-Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
-User Role: ta123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123
 =======
->>>>>>> 207cf69f80bf4009604e271543a94946edb1d844
-Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
-User Role: fh123
-Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
-User Role: eh123
-<<<<<<< HEAD
-Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
-User Role: eh123
-Database Password: $2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC
-User Role: ta123
-Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
-User Role: eh123
-Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
-User Role: eh123
-Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
-User Role: eh123
-=======
->>>>>>> 207cf69f80bf4009604e271543a94946edb1d844
-Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
-User Role: fh123
-Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
-User Role: fh123
-Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
-User Role: eh123
-Database Password: $2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO
-User Role: eh123
-Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
-User Role: fh123
+>>>>>>> 70a3fadbb5914b2372217b11b46932ae5e6a914a
+>>>>>>> b4c12940d1e90ea48d0551ac9e7ae6d8da9180ca

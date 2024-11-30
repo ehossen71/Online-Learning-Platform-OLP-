@@ -27,16 +27,19 @@
 
         /* Hero Section */
         .hero {
-            background: url('./images/frontimg.jpg') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
+    background: url('./images/frontimg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+
+
 
         .hero h1 {
             font-size: 3.5em;
@@ -177,20 +180,19 @@
         footer {
             background-color: #333;
             color: white;
+            padding: 20px;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
         }
 
         footer a {
-            color: #f41371;
+            color: #ff5722;
             text-decoration: none;
-            margin: 0 10px;
         }
 
         footer a:hover {
             text-decoration: underline;
         }
+
     </style>
 </head>
 <body>
@@ -207,17 +209,17 @@
         <h2>Why Choose Us?</h2>
         <div class="feature-cards">
             <div class="feature-card">
-                <i class="fas fa-book"></i>
+                <i class="fas fa-book"></i> <!-- Icon for courses -->
                 <h3>Wide Range of Courses</h3>
                 <p>Choose from a variety of courses in different subjects like Science, Math, Arts, and more!</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-clock"></i>
+                <i class="fas fa-clock"></i> <!-- Icon for flexibility -->
                 <h3>Flexible Learning</h3>
                 <p>Learn at your own pace. Our platform lets you study whenever and wherever you want.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-certificate"></i>
+                <i class="fas fa-certificate"></i> <!-- Icon for certification -->
                 <h3>Certification</h3>
                 <p>Earn certificates upon completion of courses to showcase your skills to the world.</p>
             </div>
@@ -227,18 +229,18 @@
     <!-- How It Works Section -->
     <section class="how-it-works">
         <h2>How It Works</h2>
-        <div class="feature-cards">
-            <div class="feature-card">
+        <div class="steps">
+            <div class="step">
                 <i class="fas fa-book"></i>
                 <h3>Choose a Course</h3>
                 <p>Select from a wide range of courses tailored to your needs.</p>
             </div>
-            <div class="feature-card">
+            <div class="step">
                 <i class="fas fa-laptop"></i>
                 <h3>Learn Online</h3>
                 <p>Access your lessons from anywhere on any device, at your own pace.</p>
             </div>
-            <div class="feature-card">
+            <div class="step">
                 <i class="fas fa-certificate"></i>
                 <h3>Get Certified</h3>
                 <p>Complete the course and receive a certification to boost your career.</p>
@@ -263,12 +265,7 @@
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 Online Learning Platform</p>
-        <p>
-            <a href="#">Privacy Policy</a> | 
-            <a href="#">Terms of Service</a> | 
-            <a href="#">Contact Us</a>
-        </p>
+        <p>&copy; 2024 Online Learning Platform | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
 </body>
