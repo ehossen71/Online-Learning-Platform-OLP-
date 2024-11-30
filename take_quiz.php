@@ -31,8 +31,8 @@ if ($result->num_rows > 0) {
 $stmt->close();
 
 // Fetch the quiz questions
-$query = "SELECT Que_NO, Question, Choice1, Choice2, Choice3, Choice4, Correct_Ans 
-          FROM quiz_question 
+$query = "SELECT Que_NO, Question, Choice1, Choice2, Choice3, Choice4, Correct_Ans
+          FROM quiz_question
           WHERE Course_ID = ? AND Quiz_NO = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("si", $course_id, $quiz_no);
@@ -60,7 +60,7 @@ $conn->close();
             window.history.pushState(null, "", location.href);
             window.onpopstate = function () {
                 // Submit quiz with 0 score if user tries to go back
-                document.getElementById('quiz-container').innerHTML = ` 
+                document.getElementById('quiz-container').innerHTML = `
                     <h1>Submitting Quiz...</h1>
                     <form id="quiz-form" method="POST" action="submit_quiz.php">
                         <input type="hidden" name="score" value="0">
@@ -75,7 +75,7 @@ $conn->close();
         function loadQuestion() {
             if (currentQuestion >= questions.length) {
                 // Automatically submit the quiz
-                document.getElementById('quiz-container').innerHTML = ` 
+                document.getElementById('quiz-container').innerHTML = `
                     <h1>Submitting Quiz...</h1>
                     <form id="quiz-form" method="POST" action="submit_quiz.php">
                         <input type="hidden" name="score" value="${score}">
@@ -88,7 +88,7 @@ $conn->close();
             }
 
             const question = questions[currentQuestion];
-            document.getElementById('quiz-container').innerHTML = ` 
+            document.getElementById('quiz-container').innerHTML = `
                 <h2>Question ${currentQuestion + 1}</h2>
                 <p>${question.Question}</p>
                 <form onsubmit="return checkAnswer(event)">
