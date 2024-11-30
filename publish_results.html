@@ -1,67 +1,97 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publish Quiz Results - OLP</title>
+    <title>Publish Results - OLP</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        // Function to fetch courses when the page loads
+        window.onload = function() {
+            fetchCourses();
+        };
+
+        // Fetch courses for the logged-in user
+        function fetchCourses() {
+            fetch('fetch_courses.php')
+                .then(response => response.json())
+                .then(data => {
+                    const courseSelect = document.getElementById('course-select');
+                    courseSelect.innerHTML = '<option value="">Choose a Course</option>';
+                    
+                    data.forEach(course => {
+                        const option = document.createElement('option');
+                        option.value = course;
+                        option.textContent = course;
+                        courseSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching courses:', error);
+                });
+        }
+
+        // Fetch quizzes based on selected Course_ID
+        function fetchQuizzes() {
+            const courseID = document.getElementById('course-select').value;
+
+            if (courseID) {
+                fetch(`fetch_quizzes.php?Course_ID=${courseID}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const quizSelect = document.getElementById('quiz-select');
+                        quizSelect.innerHTML = '<option value="">Choose a Quiz</option>';
+                        
+                        if (data.length > 0) {
+                            data.forEach(quiz => {
+                                const option = document.createElement('option');
+                                option.value = quiz;
+                                option.textContent = quiz;
+                                quizSelect.appendChild(option);
+                            });
+                        } else {
+                            const option = document.createElement('option');
+                            option.value = '';
+                            option.textContent = 'No quizzes available';
+                            quizSelect.appendChild(option);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching quizzes:', error);
+                    });
+            } else {
+                const quizSelect = document.getElementById('quiz-select');
+                quizSelect.innerHTML = '<option value="">Choose a Course first</option>';
+            }
+        }
+    </script>
 </head>
 <body>
-    <div class="results-container">
+    <div class="publish-results-container">
         <h1>Publish Quiz Results</h1>
-        
-   
-        <form class="results-form">
-            <label for="quiz-select">Select Quiz:</label>
-            <select id="quiz-select" name="quiz-select" required>
-                <option value="">Choose a quiz</option>
-                <option value="quiz1">Quiz 1: Basic Math</option>
-                <option value="quiz2">Quiz 2: Science Basics</option>
-                <option value="quiz3">Quiz 3: History Essentials</option>
-             
+
+        <form class="publish-form" method="POST" action="submit_results.php">
+            <!-- Select Course -->
+            <label for="course-select">Select Course:</label>
+            <select id="course-select" name="Course_ID" required onchange="fetchQuizzes()">
+                <option value="">Choose a Course</option>
+                <!-- Course options will be populated dynamically -->
             </select>
+
+            <!-- Select Quiz -->
+            <label for="quiz-select">Select Quiz:</label>
+            <select id="quiz-select" name="Quiz_NO" required>
+                <option value="">Choose a Quiz</option>
+                <!-- Quiz options will be populated dynamically -->
+            </select>
+
             
-            <button type="button" class="view-results-btn">View Results</button>
+            <button type="submit">Publish Results</button>
         </form>
-        
-      
-        <div class="results-table">
-            <h2>Results for Selected Quiz</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Score</th>
-                        <th>Result Status</th>
-                        <th>Publish</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Student A</td>
-                        <td>85%</td>
-                        <td>Pass</td>
-                        <td><button class="publish-btn">Publish</button></td>
-                    </tr>
-                    <tr>
-                        <td>Student B</td>
-                        <td>70%</td>
-                        <td>Pass</td>
-                        <td><button class="publish-btn">Publish</button></td>
-                    </tr>
-                    <tr>
-                        <td>Student C</td>
-                        <td>45%</td>
-                        <td>Fail</td>
-                        <td><button class="publish-btn">Publish</button></td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-        
-        <a href="instructor_dashboard.html"><button class="back-btn">Back to Dashboard</button> </a>
+
+        <a href="instructor_dashboard.html"><button class="back-btn">Back to Dashboard</button></a>
     </div>
 </body>
 </html>
