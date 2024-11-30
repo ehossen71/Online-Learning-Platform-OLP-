@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard - OLP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Online Learning Platform</h2>
+            </div>
+            <ul>
+                <li><a href="#manage-courses"><i class="fas fa-chalkboard-teacher"></i> Manage Courses</a></li>
+                <li><a href="#create-quizzes"><i class="fas fa-pen-alt"></i> Create Quizzes</a></li>
+                <li><a href="#publish-results"><i class="fas fa-chart-bar"></i> Publish Results</a></li>
+                <li><a href="#issue-certificates"><i class="fas fa-certificate"></i> Issue Certificates</a></li>
+                <li><a href="#announcements"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+            </ul>
+            <a href="logout.php"><button class="logout-btn">Logout</button></a>
+
+        </nav>
+
+        
+        <main class="content">
+            <section id="manage-courses">
+                <div class="course-card">
+                    <h1>Manage Courses</h1>
+                    <a href="add_course.html"><button>Add New Course</button></a>
+                </div>
+            
+                
+                    <div class="course-card">
+                        <h1>Course Management</h1>
+                        <a href="view_course.php"><button>View Courses</button></a>
+                        <h1><br></h1>
+                        <a href="edit_course.php?Course_ID"><button>Edit a Course</button></a>
+                        <!-- Replace Course_ID=1 with a dynamic ID based on your actual courses -->
+                    </div>
+                </section>
+            </section>
+
+            <section id="create-quizzes">
+                <div class="course-card">
+                    <h1>Create Quizzes</h1>
+                <a href="create_quiz.php"><button>Create New Quiz</button></a>
+                </div>
+                
+            </section>
+
+            <section id="publish-results">
+                <div class="course-card">
+                    <h1>Publish Quiz Results</h1>
+                    <a href="publish_results.html"><button>Select Quiz to Publish Results</button></a>
+                </div>
+                
+            </section>
+            <section id="issue-certificates">
+                <div class="course-card">
+                    <h1>Issue Certificates</h1>
+                    <a href="issue_certificates.html"><button>Select Course and Student</button></a>
+                </div>
+              
+            </section>
+            <section id="announcements">
+                <div class="course-card">
+                    <h1>Announcements</h1>
+                    <a href="create_announcement.php"><button>Post New Announcement</button></a>
+
+                </div>
+               
+            </section>
+        </main>
+    </div>
+</body>
+</html>
