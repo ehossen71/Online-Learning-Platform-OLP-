@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 10:01 PM
+-- Generation Time: Nov 30, 2024 at 12:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -196,18 +196,6 @@ CREATE TABLE `qualification` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quiz`
---
-
-CREATE TABLE `quiz` (
-  `Quiz_ID` int(20) NOT NULL,
-  `Quizname` varchar(50) DEFAULT NULL,
-  `studentID` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `quizresult`
 --
 
@@ -218,6 +206,53 @@ CREATE TABLE `quizresult` (
   `quiz_ID` int(20) DEFAULT NULL,
   `studentID` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_description`
+--
+
+CREATE TABLE `quiz_description` (
+  `Course_ID` varchar(20) NOT NULL,
+  `Quiz_NO` int(11) NOT NULL,
+  `Description_Quiz` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz_description`
+--
+
+INSERT INTO `quiz_description` (`Course_ID`, `Quiz_NO`, `Description_Quiz`) VALUES
+('CSE115.2', 1, 'Read carefully and choose the correct answer after choosing once you cannot back for another choice.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_question`
+--
+
+CREATE TABLE `quiz_question` (
+  `Course_ID` varchar(20) NOT NULL,
+  `Quiz_NO` int(11) NOT NULL,
+  `Que_NO` int(11) NOT NULL,
+  `Question` text NOT NULL,
+  `Choice1` text NOT NULL,
+  `Choice2` text NOT NULL,
+  `Choice3` text NOT NULL,
+  `Choice4` text NOT NULL,
+  `Correct_Ans` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz_question`
+--
+
+INSERT INTO `quiz_question` (`Course_ID`, `Quiz_NO`, `Que_NO`, `Question`, `Choice1`, `Choice2`, `Choice3`, `Choice4`, `Correct_Ans`) VALUES
+('CSE115.2', 1, 1, '2+2 = ?', '3', '10', '4', '7', 'choice3'),
+('CSE115.2', 1, 2, '(a + b)^2 = ?', 'a^2 + 2ab - b^2', 'a^2 + 2ab + b^2', 'a^2 - 2ab + b^2', 'a^2 + 4ab + b^2', 'choice2'),
+('CSE115.2', 1, 3, 'What is the capital of Bangladesh?', 'Khulna', 'Barishal', 'Dhaka', 'Narsingdi', 'choice3'),
+('CSE115.2', 1, 4, 'What is the national fruit of Bangladesh?', 'Jackfruit', 'Mango', 'Banana', 'Apple', 'choice1');
 
 -- --------------------------------------------------------
 
@@ -371,19 +406,24 @@ ALTER TABLE `qualification`
   ADD KEY `Ins_ID` (`Ins_ID`);
 
 --
--- Indexes for table `quiz`
---
-ALTER TABLE `quiz`
-  ADD PRIMARY KEY (`Quiz_ID`),
-  ADD KEY `studentID` (`studentID`);
-
---
 -- Indexes for table `quizresult`
 --
 ALTER TABLE `quizresult`
   ADD PRIMARY KEY (`QuizResultID`),
   ADD KEY `quiz_ID` (`quiz_ID`),
   ADD KEY `studentID` (`studentID`);
+
+--
+-- Indexes for table `quiz_description`
+--
+ALTER TABLE `quiz_description`
+  ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`);
+
+--
+-- Indexes for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`,`Que_NO`);
 
 --
 -- Indexes for table `section`
@@ -519,17 +559,17 @@ ALTER TABLE `qualification`
   ADD CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`Ins_ID`) REFERENCES `instructor` (`Ins_ID`);
 
 --
--- Constraints for table `quiz`
---
-ALTER TABLE `quiz`
-  ADD CONSTRAINT `quiz_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`StudentID`);
-
---
 -- Constraints for table `quizresult`
 --
 ALTER TABLE `quizresult`
   ADD CONSTRAINT `quizresult_ibfk_1` FOREIGN KEY (`quiz_ID`) REFERENCES `quiz` (`Quiz_ID`),
   ADD CONSTRAINT `quizresult_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`StudentID`);
+
+--
+-- Constraints for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD CONSTRAINT `quiz_question_ibfk_1` FOREIGN KEY (`Course_ID`,`Quiz_NO`) REFERENCES `quiz_description` (`Course_ID`, `Quiz_NO`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `section`
