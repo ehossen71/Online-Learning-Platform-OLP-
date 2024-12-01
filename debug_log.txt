@@ -282,3 +282,7 @@ Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
 User Role: fh123
 Database Password: $2y$10$RVp1NGp07toNzHq.pWuUI.8bDqJWQpNN1oZ/q3Ev9n5q1Uuk8xkTC
 User Role: ah123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123
+Database Password: $2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6
+User Role: fh123

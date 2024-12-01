@@ -675,3 +675,120 @@ footer a:hover {
     text-align: center;
     margin-bottom: 20px;
 }
+/* Elephant Selection for the dropdown */
+.elephant-selection {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.elephant-selection select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Panda button style */
+.panda-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.panda-btn:hover {
+    background-color: #45a049;
+}
+
+/* Koala table style */
+.koala-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.koala-table th, .koala-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.koala-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.koala-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.koala-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Giraffe Container */
+.giraffe-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Certificate styles */
+.certificate-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 10px solid #4CAF50;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+/* Animal-themed class names for styling */
+.wolf {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.lion {
+    color: #2c3e50;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.eagle {
+    font-size: 24px;
+    color: #2980b9;
+}
+
+.tiger {
+    font-size: 20px;
+    color: #16a085;
+    font-style: italic;
+}
+
+.button-jaguar {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.button-jaguar:hover {
+    background-color: #2ecc71;
+}
+

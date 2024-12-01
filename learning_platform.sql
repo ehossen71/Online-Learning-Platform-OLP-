@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 05:15 AM
+-- Generation Time: Dec 01, 2024 at 07:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,15 +47,25 @@ INSERT INTO `announcement` (`Announce_ID`, `UserID`, `Course_ID`, `Title`, `Cont
 -- --------------------------------------------------------
 
 --
--- Table structure for table `certification`
+-- Table structure for table `certificates`
 --
 
-CREATE TABLE `certification` (
-  `CertificationID` int(10) NOT NULL,
-  `IssueDate` date DEFAULT NULL,
-  `enrollmentID` int(10) DEFAULT NULL,
-  `studentID` int(10) DEFAULT NULL
+CREATE TABLE `certificates` (
+  `Certificate_ID` int(11) NOT NULL,
+  `Course_ID` varchar(20) NOT NULL,
+  `Student_ID` varchar(50) NOT NULL,
+  `Score` decimal(5,2) NOT NULL,
+  `Issue_Date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Certificate_File` varchar(255) DEFAULT NULL,
+  `Date_issued` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `certificates`
+--
+
+INSERT INTO `certificates` (`Certificate_ID`, `Course_ID`, `Student_ID`, `Score`, `Issue_Date`, `Certificate_File`, `Date_issued`) VALUES
+(1, 'MAT350.9', 'emon123', 0.00, '2024-12-01 06:04:20', NULL, '2024-12-01');
 
 -- --------------------------------------------------------
 
@@ -103,7 +113,11 @@ CREATE TABLE `enrollment` (
 INSERT INTO `enrollment` (`EnrollmentID`, `enrollmentDate`, `StudentID`, `course_ID`) VALUES
 (8, '2024-11-29', 2, 'CSE115.2'),
 (9, '2024-11-29', 3, 'MAT350.9'),
-(10, '2024-11-29', 3, 'CSE115.2');
+(10, '2024-11-29', 3, 'CSE115.2'),
+(11, '2024-12-01', 4, 'CSE115.2'),
+(12, '2024-12-01', 4, 'HIS103.5'),
+(13, '2024-12-01', 4, 'MAT350.9'),
+(14, '2024-12-01', 4, 'MAT361.10');
 
 -- --------------------------------------------------------
 
@@ -257,8 +271,10 @@ CREATE TABLE `quiz_result` (
 
 INSERT INTO `quiz_result` (`Course_ID`, `Quiz_NO`, `Score`, `Student_ID`, `CourseName`) VALUES
 ('CSE115.2', 1, 2, 2, 'Introduction to C programming'),
+('CSE115.2', 1, 2, 4, 'Introduction to C programming'),
 ('CSE115.2', 2, 2, 2, 'Introduction to C programming'),
-('MAT350.9', 1, 1, 3, 'Engineering Mathematics');
+('MAT350.9', 1, 1, 3, 'Engineering Mathematics'),
+('MAT350.9', 1, 1, 4, 'Engineering Mathematics');
 
 -- --------------------------------------------------------
 
@@ -298,6 +314,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`StudentID`, `UserID`) VALUES
+(4, 'ah123'),
 (2, 'emon123'),
 (3, 'tanora123');
 
@@ -321,6 +338,7 @@ CREATE TABLE `userinfo` (
 --
 
 INSERT INTO `userinfo` (`UserID`, `First_Name`, `Last_Name`, `Role`, `Email`, `Password`) VALUES
+('ah123', 'Abir', 'Hossen', 'Student', 'ah@gmail.com', '$2y$10$RVp1NGp07toNzHq.pWuUI.8bDqJWQpNN1oZ/q3Ev9n5q1Uuk8xkTC'),
 ('emon123', 'Emon', 'Hossen', 'Student', 'eh@gmail.com', '$2y$10$gTExMbhIyWqX4lEihjbSlOhY0hQa7CcM13ptQsToUKq1R/592hcdO'),
 ('faheem123', 'Faheem', 'Hasnat', 'Instructor', 'fh@gmail.com', '$2y$10$o4EO3hNEYmdlkHMFpwr7/e6/LNPSFv1NTBrrofXrgRkI27tu4kDO6'),
 ('tanora123', 'Tanora', 'Akther', 'Student', 'ta@gmail.com', '$2y$10$eZMpt7A5.UhoRN//76PijuaYshlWXrawYxbX6RkDSXkpqXm0SZRmC'),
@@ -339,12 +357,12 @@ ALTER TABLE `announcement`
   ADD KEY `fk_UserID` (`UserID`);
 
 --
--- Indexes for table `certification`
+-- Indexes for table `certificates`
 --
-ALTER TABLE `certification`
-  ADD PRIMARY KEY (`CertificationID`),
-  ADD KEY `enrollmentID` (`enrollmentID`),
-  ADD KEY `studentID` (`studentID`);
+ALTER TABLE `certificates`
+  ADD PRIMARY KEY (`Certificate_ID`),
+  ADD KEY `Course_ID` (`Course_ID`),
+  ADD KEY `Student_ID` (`Student_ID`);
 
 --
 -- Indexes for table `course`
@@ -432,6 +450,12 @@ ALTER TABLE `announcement`
   MODIFY `Announce_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `certificates`
+--
+ALTER TABLE `certificates`
+  MODIFY `Certificate_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
@@ -441,7 +465,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `EnrollmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `EnrollmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `instructor`
@@ -459,7 +483,7 @@ ALTER TABLE `quizresult`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `StudentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `StudentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -473,11 +497,11 @@ ALTER TABLE `announcement`
   ADD CONSTRAINT `fk_course` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`);
 
 --
--- Constraints for table `certification`
+-- Constraints for table `certificates`
 --
-ALTER TABLE `certification`
-  ADD CONSTRAINT `certification_ibfk_1` FOREIGN KEY (`enrollmentID`) REFERENCES `enrollment` (`EnrollmentID`),
-  ADD CONSTRAINT `certification_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`StudentID`);
+ALTER TABLE `certificates`
+  ADD CONSTRAINT `certificates_ibfk_1` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `certificates_ibfk_2` FOREIGN KEY (`Student_ID`) REFERENCES `userinfo` (`UserID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `course`
