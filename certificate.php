@@ -1,4 +1,11 @@
 <?php
+// Start session to ensure user is logged in
+session_start();
+if (!isset($_SESSION['userID'])) {
+    header("Location: login.html");
+    exit();
+}
+
 // Capture the passed parameters
 if (isset($_GET['student'], $_GET['score'], $_GET['course'])) {
     $student_name = $_GET['student'];
@@ -7,6 +14,7 @@ if (isset($_GET['student'], $_GET['score'], $_GET['course'])) {
 } else {
     die("Missing data.");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -21,32 +29,32 @@ if (isset($_GET['student'], $_GET['score'], $_GET['course'])) {
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f0f8ff;
         }
 
         .certificate-container {
             width: 80%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px;
             border: 10px solid #4CAF50;
             background-color: white;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
 
         .certificate-container h1 {
-            font-size: 40px;
+            font-size: 36px;
             color: #4CAF50;
             margin-bottom: 20px;
         }
 
         .student-name {
-            font-size: 30px;
+            font-size: 28px;
             color: #333;
             margin: 20px 0;
         }
 
         .course-name {
-            font-size: 25px;
+            font-size: 24px;
             color: #333;
             margin: 20px 0;
         }
@@ -60,13 +68,13 @@ if (isset($_GET['student'], $_GET['score'], $_GET['course'])) {
 
         .footer {
             margin-top: 40px;
-            font-size: 20px;
+            font-size: 18px;
             color: #777;
         }
 
         .signature {
             margin-top: 50px;
-            font-size: 25px;
+            font-size: 24px;
             font-weight: bold;
             color: #4CAF50;
         }

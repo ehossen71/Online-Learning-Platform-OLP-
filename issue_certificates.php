@@ -42,6 +42,11 @@ $result = $stmt->get_result();
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
             padding: 20px;
+            margin: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         h2 {
             text-align: center;
@@ -53,6 +58,7 @@ $result = $stmt->get_result();
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
+            flex-grow: 1;
         }
         label {
             font-size: 18px;
@@ -65,6 +71,22 @@ $result = $stmt->get_result();
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+        }
+        .back-button {
+            background-color: #ff8c00; /* Orange color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+        }
+        .back-button:hover {
+            background-color: #e07b00; /* Darker orange for hover effect */
         }
     </style>
 </head>
@@ -108,6 +130,11 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $conn->close();
 ?>
+
+<!-- Back to Dashboard Button -->
+<a href="instructor_dashboard.html">
+    <button class="back-button">Back to Dashboard</button>
+</a>
 
 </body>
 </html>
