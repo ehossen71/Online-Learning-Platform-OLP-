@@ -58,6 +58,6 @@ foreach ($course_ids as $course_id) {
 
 $conn->close();
 
-// Store the progress data in the session or return as a response
-$_SESSION['progress_data'] = $progress_data; // Pass the progress data to the HTML
+// Store the progress data in the session to pass it to HTML
+$_SESSION['progress_data'] = $progress_data;
 ?>

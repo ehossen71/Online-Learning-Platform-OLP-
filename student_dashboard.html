@@ -69,9 +69,10 @@
                 </div>
             </section>
 
+           
             <!-- Progress Section -->
             <section id="progress">
-                <h1>Progress</h1>
+                
                 
                 <!-- Dynamically Populate Progress Bars -->
                 <?php 
@@ -81,6 +82,7 @@
                         foreach ($progress_data as $data): 
                 ?>
                     <div class="progress-card">
+                        <h1>Progress</h1>
                         <h3><?php echo $data['course_id']; ?></h3>
                         <p>Progress: <?php echo round($data['progress_percentage'], 2); ?>%</p>
                         <div class="progress-bar">
@@ -90,6 +92,14 @@
                     </div>
                 <?php endforeach; endif; ?>
             </section>
+
+            <section id="leaderboard">
+                <div class="quiz-card">
+                    <h1>Leaderboard</h1>
+                    <a href="leaderboard.php"><button class="leaderboard-btn">View Leaderboard</button></a>
+                </div>
+            </section>
+
 
             <!-- Announcements Section -->
             <section id="announcements">
