@@ -6,7 +6,23 @@
     <title>Student Dashboard - OLP</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Progress Bar CSS */
+        .progress-bar {
+            background-color: #e6e6e6;
+            border-radius: 10px;
+            height: 20px;
+            margin-top: 10px;
+            width: 100%;
+            transition: width 1s ease-in-out; /* Smooth animation for progress bar */
+        }
 
+        .progress {
+            background-color: #4caf50;
+            height: 100%;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-container">
@@ -52,34 +68,27 @@
                     <a href="available_quizes.php"><button>View Quizzes</button></a>
                 </div>
             </section>
-            
 
             <!-- Progress Section -->
             <section id="progress">
                 <h1>Progress</h1>
-                <div class="progress-card">
-                    <h3>Advanced Mathematics</h3>
-                    <p>Progress: 80%</p>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 80%;"></div>
+                
+                <!-- Dynamically Populate Progress Bars -->
+                <?php 
+                    session_start();
+                    if (isset($_SESSION['progress_data'])):
+                        $progress_data = $_SESSION['progress_data'];
+                        foreach ($progress_data as $data): 
+                ?>
+                    <div class="progress-card">
+                        <h3><?php echo $data['course_id']; ?></h3>
+                        <p>Progress: <?php echo round($data['progress_percentage'], 2); ?>%</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: <?php echo $data['progress_percentage']; ?>%;"></div>
+                        </div>
+                        <p>Total Quizzes: <?php echo $data['total_quizzes']; ?> | Completed Quizzes: <?php echo $data['completed_quizzes']; ?></p>
                     </div>
-                </div>
-
-                <div class="progress-card">
-                    <h3>History of Arts</h3>
-                    <p>Progress: 50%</p>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 50%;"></div>
-                    </div>
-                </div>
-
-                <div class="progress-card">
-                    <h3>Introduction to Programming</h3>
-                    <p>Progress: 65%</p>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 65%;"></div>
-                    </div>
-                </div>
+                <?php endforeach; endif; ?>
             </section>
 
             <!-- Announcements Section -->
