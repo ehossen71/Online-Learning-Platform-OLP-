@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 12:52 AM
+-- Generation Time: Dec 01, 2024 at 05:15 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -155,7 +155,35 @@ CREATE TABLE `progress` (
 --
 
 INSERT INTO `progress` (`Course_ID`, `Quiz_NO`, `StudentID`, `Percentage`) VALUES
+('0', 1, 2, 50.00),
+('0', 1, 3, 25.00),
+('0', 2, 2, 66.67),
 ('MAT350.9', 1, 0, 0.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quizresult`
+--
+
+CREATE TABLE `quizresult` (
+  `QuizResultID` int(10) NOT NULL,
+  `Course_ID` varchar(20) NOT NULL,
+  `Quiz_NO` int(11) NOT NULL,
+  `Student_ID` int(11) NOT NULL,
+  `Score` int(11) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quizresult`
+--
+
+INSERT INTO `quizresult` (`QuizResultID`, `Course_ID`, `Quiz_NO`, `Student_ID`, `Score`, `Date`) VALUES
+(1, 'CSE115.2', 1, 2, 2, '2024-12-01 03:52:35'),
+(2, 'CSE115.2', 2, 2, 2, '2024-12-01 03:52:35'),
+(3, 'MAT350.9', 1, 3, 1, '2024-12-01 03:52:35'),
+(4, 'CSE115.2', 1, 2, 5, '2024-12-01 03:53:11');
 
 -- --------------------------------------------------------
 
@@ -349,6 +377,14 @@ ALTER TABLE `progress`
   ADD PRIMARY KEY (`Course_ID`,`Quiz_NO`,`StudentID`);
 
 --
+-- Indexes for table `quizresult`
+--
+ALTER TABLE `quizresult`
+  ADD PRIMARY KEY (`QuizResultID`),
+  ADD KEY `Course_ID` (`Course_ID`),
+  ADD KEY `Student_ID` (`Student_ID`);
+
+--
 -- Indexes for table `quiz_description`
 --
 ALTER TABLE `quiz_description`
@@ -414,6 +450,12 @@ ALTER TABLE `instructor`
   MODIFY `Ins_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `quizresult`
+--
+ALTER TABLE `quizresult`
+  MODIFY `QuizResultID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
@@ -454,6 +496,13 @@ ALTER TABLE `enrollment`
 --
 ALTER TABLE `instructor`
   ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userinfo` (`UserID`);
+
+--
+-- Constraints for table `quizresult`
+--
+ALTER TABLE `quizresult`
+  ADD CONSTRAINT `quizresult_ibfk_1` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`),
+  ADD CONSTRAINT `quizresult_ibfk_2` FOREIGN KEY (`Student_ID`) REFERENCES `student` (`StudentID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
