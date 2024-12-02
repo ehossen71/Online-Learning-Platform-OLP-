@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 07:07 AM
+-- Generation Time: Dec 02, 2024 at 03:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,6 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`Announce_ID`, `UserID`, `Course_ID`, `Title`, `Content`, `Created_At`) VALUES
-(9, 'faheem123', 'CSE115.2', 'Quiz update', 'Kalke quiz ', '2024-11-29 17:11:00'),
 (10, 'faheem123', 'MAT350.9', 'Quiz update', 'lfajslsdjg ojflsdjgl ', '2024-11-29 18:32:32');
 
 -- --------------------------------------------------------
@@ -90,7 +89,7 @@ CREATE TABLE `course` (
 INSERT INTO `course` (`Course_Num`, `Course_ID`, `CourseName`, `Description`, `UserID`, `Start_Date`, `End_Date`) VALUES
 (3, 'CSE115.2', 'Introduction to C programming', 'This is a C programming language course', 'faheem123', '2024-10-27', '2024-12-25'),
 (6, 'HIS103.5', 'Emergence of Bangladesh', 'This course is about history of Bangladesh', 'tanvir123', '2024-09-29', '2024-12-07'),
-(4, 'MAT350.9', 'Engineering Mathematics', 'This is an Engineering mathematics course', 'faheem123', '2024-10-27', '2024-12-25'),
+(4, 'MAT350.9', 'Engineering Mathematics', 'The cow is a domesticated mammal widely known for its gentle nature and significant role in agriculture. Belonging to the species Bos taurus, cows are herbivorous animals primarily fed on grass, hay, and silage. They are vital for milk production, providing dairy products like cheese, butter, and yogurt. Cows also contribute to farming as draft animals and are valued for their leather and meat in various cultures. They have a robust digestive system featuring a four-chambered stomach that efficiently processes fibrous plants. Cows are social animals, often forming strong bonds within their herd, showcasing intelligence and a peaceful demeanor.', 'faheem123', '2024-10-27', '2024-12-25'),
 (5, 'MAT361.10', 'Statistics ', 'This is a statistics course', 'faheem123', '2024-10-27', '2024-12-25');
 
 -- --------------------------------------------------------
@@ -117,7 +116,10 @@ INSERT INTO `enrollment` (`EnrollmentID`, `enrollmentDate`, `StudentID`, `course
 (11, '2024-12-01', 4, 'CSE115.2'),
 (12, '2024-12-01', 4, 'HIS103.5'),
 (13, '2024-12-01', 4, 'MAT350.9'),
-(14, '2024-12-01', 4, 'MAT361.10');
+(14, '2024-12-01', 4, 'MAT361.10'),
+(15, '2024-12-01', 2, 'MAT361.10'),
+(16, '2024-12-01', 2, 'MAT350.9'),
+(17, '2024-12-01', 2, 'HIS103.5');
 
 -- --------------------------------------------------------
 
@@ -465,7 +467,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `EnrollmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `EnrollmentID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `instructor`

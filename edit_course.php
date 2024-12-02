@@ -59,7 +59,7 @@ $conn->close();
             <label for="course-id">Course ID:</label>
             <input type="text" id="course-id" name="Course_ID" value="<?php echo htmlspecialchars($courseID ?? ''); ?>" required>
             <br>
-            <button type="submit">Fetch Course</button>
+            <button type="submit">Course Details</button>
         </form>
     <?php endif; ?>
 
